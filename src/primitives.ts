@@ -20,6 +20,9 @@ let myTypescriptNumber = 2;
 let myNumberToBeCoerced = '2';
 
 // // this is any type period, it's not already declared explicitly or implicitly
+// // // you can set a config for noImplicitAny if desired
+
+// // // NOTE: any will disable further typechecking
 let myAnyTypescriptNumber;
 
 // *** typescript will never allow your coerced string number to be a number type unless #1
