@@ -3,7 +3,7 @@
   GOTCHA: "noEmitOnError": false is default
   comments thruout assume we've set this to true
 
-  Perspecive: If this is a first stage in a CI process, this makes a ton of sense for testing.
+  Typescripts defaults to this to stay out of your way while coding.
 
   TLDR: your file, by default, is compiled despite TS errors
 
@@ -51,3 +51,64 @@ console.log(sqaureNumbers(myNumberToBeCoerced));
 // // shape detection
 console.log(myNonString.length);
 console.log(myNonString.toUpperCase());
+
+// unions and variables
+// // unions allow define multiple types
+// // all types defined must validate with whats being used
+
+function printNumsAndStrings(statement: string | number) {
+  console.log(`ℹ️ LOG:: ${statement}`);
+}
+
+printNumsAndStrings(3);
+printNumsAndStrings('hello!');
+
+// // narrowing can be used to get these to validate
+// // this applies to type members
+type Like = {
+  username: string;
+  displayName: string;
+};
+
+type Share = {
+  username: string;
+};
+
+function formatValue(value: string | number) {
+  if(typeof value === 'string') {
+    console.log(value.toLowerCase())
+  }
+
+  if(typeof value === 'number') {
+    console.log(value.toFixed(2))
+  }
+}
+
+formatValue('Hiya');
+formatValue(42);
+
+
+// you can store types in the unions
+type User = {
+  id: number;
+  username: string;
+};
+
+function createUser() {
+  const randomChance = Math.random() >= 0.5;
+
+  if (randomChance) {
+    return { id: 1, username: 'nikko' };
+  } else {
+    return 'Could not create a user.';
+  }
+}
+
+const userData: User | string = createUser()
+
+// you can use unions paired with arrays...
+// // listings: (string | number)[] // array with numbers and strings
+// // listings: string | number[] // this is incorrect, this would mean a string or array of numbers
+
+type Status = 'idle' | 'downloading' | 'complete';
+function downloadStatus(status: Status) { /* if checks for status here */ }
