@@ -27,3 +27,42 @@ let aFamily: Family<Human> = {
   children: [{name: 'Babesky', job: 'none'}]
 };
 
+interface Hero {
+  name: string,
+  superpower: string
+}
+
+const h1: Hero = { name: 'Flash', superpower: 'Fast' }
+const h2: Hero = { name: 'Batman', superpower: 'Rich' }
+const h3: Hero = { name: 'Superman', superpower: 'Godlike' }
+const h4: Hero = { name: 'Hulk', superpower: 'Strong' }
+
+const heroes = [h1, h2, h3, h4];
+
+class SmartArray <T>{
+  private array: T[] = [];
+  constructor(array: T[]) {
+    this.array = array;
+  }
+
+  get values() {
+    return this.array;
+  }
+
+  shuffle(): T[] {
+    return this.array.sort(() => Math.random() - 0.5)
+  }
+
+  push(element: T): void {
+    this.array.push(element)
+  }
+
+  removeLast(): T[] {
+    this.array.slice(0, this.array.length - 1);
+    return this.array;
+  }
+}
+
+const heroSmartArray = new SmartArray(heroes);
+
+heroSmartArray.shuffle()

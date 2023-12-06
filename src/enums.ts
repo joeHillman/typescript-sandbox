@@ -19,10 +19,20 @@
 
 // // Numeric Enums
 enum Direction {
-  North, // implicit type number and value 0 // if assigned 5
+  North, // implicit type number and value 0 // if assigned 5 or can reassign North = "North"
   South, // implicit type number and value 1 // implicit 6
   East,
   West
+}
+
+const direction : Direction = Direction.North;
+
+function moveNSEW(directions: Direction) {
+  switch(direction){
+    case Direction.North:
+      console.log('Moving north...')
+    break;
+  }
 }
 
 let whichWayToArcticOcean: Direction;
